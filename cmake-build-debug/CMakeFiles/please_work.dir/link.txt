@@ -1,0 +1,1 @@
+/usr/bin/cc -g CMakeFiles/please_work.dir/sclient.c.o CMakeFiles/please_work.dir/sserver.c.o -o please_work 
