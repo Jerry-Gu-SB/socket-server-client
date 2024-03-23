@@ -283,7 +283,7 @@ main(const int argc, const char **argv) {
                         printf("content-length found: %d\n", content_length_received);
                     }
                     header_parsed_flag = TRUE;
-                    printf("HEADER PARSED! ------\n");
+                    printf("HEADER PARSED!\n");
                     break;
                 default:
                     fprintf(stderr, "Oops! You weren't supposed to find me O__o\n");
@@ -313,7 +313,7 @@ main(const int argc, const char **argv) {
             fprintf(stderr, "ERROR: send failed...\n");
             exit(-1);
         }
-        printf("RESPONSE SENT TO CLIENT!");
+        printf("RESPONSE SENT TO CLIENT!---------------------\n");
         free(s_server_domain_name);
         free(content_length_string);
         free(message_to_client);
