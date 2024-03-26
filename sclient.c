@@ -137,7 +137,7 @@ main(const int argc, const char **argv) {
 
 
     // printf("header_and_content_from_server: %s\n",header_and_content_from_server);
-    const char *message_content_from_server = strstr(header_and_content_from_server, "\r\n\r\n") + 2;
+    const char *message_content_from_server = strstr(header_and_content_from_server, "\r\n\r\n") + 4; // +4 to chop off the double new line
 
     // printf("message content from server: %s\n", message_content_from_server);
 
@@ -250,7 +250,7 @@ main(const int argc, const char **argv) {
 
     if (header_is_bad_request) {
         // just write the header
-        printf("Header is a bad request! printing just the content");
+        printf("Header is a bad request! Printing just the content\n");
         write(1, header_and_content_from_server, strlen(header_and_content_from_server));
     } else {
         // just write the messsage

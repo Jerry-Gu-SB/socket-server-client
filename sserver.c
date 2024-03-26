@@ -115,7 +115,7 @@ main(const int argc, const char **argv) {
         // for 1,2 iterations, check for host/content
         // for 3rd iteration, check for empty line
 
-        const char *message_content_from_client = strstr(header_and_content_from_client, "\r\n\r\n") + 2;
+        const char *message_content_from_client = strstr(header_and_content_from_client, "\r\n\r\n") + 4; // + 4 to chop off the new lines
         // printf("MESSAGE_CONTENT_FROM_CLIENT: %s\n", message_content_from_client);
         if (message_content_from_client == NULL) {
             fprintf(stderr, "ERROR: no content in message received from server");
@@ -127,7 +127,7 @@ main(const int argc, const char **argv) {
             exit(-1);
         }
 
-        char *line = strtok(header_and_content_from_client, "\r\n");
+        const char *line = strtok(header_and_content_from_client, "\r\n");
         char *s_server_domain_name = (char *) calloc(100, sizeof(char));
         char *content_length_string = (char *) calloc(10, sizeof(char));
 
@@ -305,7 +305,7 @@ main(const int argc, const char **argv) {
         if (snprintf(message_to_client, MAX_HDR + MAX_CONT,
                      "POST 200 OK\r\n"
                      "Content-length: %d\r\n\r\n"
-                     "%s\r\n", content_length_received, message_content_copy) < 0) {
+                     "%s", content_length_received, message_content_copy) < 0) {
             fprintf(stderr, "ERROR: snprintf message to send to server failed\n");
         }
 
