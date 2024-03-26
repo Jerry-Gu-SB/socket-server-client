@@ -137,7 +137,7 @@ main(const int argc, const char **argv) {
 
 
     // printf("header_and_content_from_server: %s\n",header_and_content_from_server);
-    const char *message_content_from_server = strstr(header_and_content_from_server, "\r\n\r\n") + 2;
+    const char *message_content_from_server = strstr(header_and_content_from_server, "\r\n\r\n");
 
     // printf("message content from server: %s\n", message_content_from_server);
 

@@ -107,7 +107,7 @@ main(const int argc, const char **argv) {
             fprintf(stderr, "ERROR: receiving failed...\n");
             exit(-1);
         }
-        header_and_content_from_client[MAX_HDR + MAX_CONT - 1] = '\0';
+
         // printf("content received: %s\n", header_and_content_from_client);
         // parsing the strings splitted
 
@@ -115,7 +115,7 @@ main(const int argc, const char **argv) {
         // for 1,2 iterations, check for host/content
         // for 3rd iteration, check for empty line
 
-        const char *message_content_from_client = strstr(header_and_content_from_client, "\r\n\r\n") + 2;
+        char *message_content_from_client = strstr(header_and_content_from_client, "\r\n\r\n");
         // printf("MESSAGE_CONTENT_FROM_CLIENT: %s\n", message_content_from_client);
         if (message_content_from_client == NULL) {
             fprintf(stderr, "ERROR: no content in message received from server");
